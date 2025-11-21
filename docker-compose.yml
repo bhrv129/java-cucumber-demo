@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium-chrome
+    shm_size: '2g'
+    ports:
+      - "4444:4444" # WebDriver
+      - "7900:7900" # noVNC (web VNC)
+      - "5900:5900" # VNC
+    restart: unless-stopped
+    environment:
+      - SE_NODE_MAX_SESSIONS=1
